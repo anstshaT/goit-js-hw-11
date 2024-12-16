@@ -1,5 +1,5 @@
-import { renderPhotos } from "./js/render-function";
-import { fetchFunction } from "./js/pixabay-api";
+import { renderPhotos } from "./js/render-function.js";
+import { fetchFunction } from "./js/pixabay-api.js";
 
 // Повідомлення
 import iziToast from "izitoast";
