@@ -27,13 +27,19 @@ function hideLoader() {
 
 
 form.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-        showLoader();
-        const query = input.value;
+    evt.preventDefault();
+    showLoader();
+    const query = input.value;
+    photoList.innerHTML = "";
     
         if(query.trim() === "") {
             console.log("Input is empty");
-            
+            iziToast.info({
+                    message: 'Input is empty',
+                    messageSize: "16px",
+                    position: "topRight"
+            });
+            hideLoader();
             return;
         }
     
@@ -49,15 +55,28 @@ form.addEventListener("submit", (evt) => {
                     messageSize: "16px",
                     position: "topRight"
                 });
+
+                photoList.innerHTML = "";
                 return;
             }
 
-            renderPhotos(photos.hits, photoList, gallery);
+            renderPhotos(photos.hi, photoList, gallery);
             })
-        .catch((error) => console.log(error))
+            .catch((error) => {
+                console.log(error);
+                iziToast.error({
+                    message: error.message,
+                    theme: "dark",
+                    backgroundColor: "red",
+                    messageColor: "white",
+                    messageSize: "16px",
+                    position: "topRight"
+                });
+                hideLoader();
+            })
         .finally(() => {
             hideLoader()
-            evt.target.reset()
+            evt.target.reset();
         })
 })
 

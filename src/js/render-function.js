@@ -34,8 +34,6 @@ export function renderPhotos(arr, photoList, gallery) {
         `
     }).join("");
 
-    photoList.innerHTML = "";
-
     photoList.insertAdjacentHTML("beforeend", markup);
 
     gallery.refresh();
