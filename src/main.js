@@ -60,7 +60,7 @@ form.addEventListener("submit", (evt) => {
                 return;
             }
 
-            renderPhotos(photos.hi, photoList, gallery);
+            renderPhotos(photos.hits, photoList, gallery);
             })
             .catch((error) => {
                 console.log(error);
